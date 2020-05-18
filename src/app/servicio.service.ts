@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Attribute } from '@angular/core';
 import { Post } from './models/post.model';
 
 @Injectable({
@@ -19,11 +19,11 @@ export class ServicioService {
    //New Post
 
   agregarPost(Post){
-
   }
 
-  getAllPost(){
-
+  getAllPost(): Post[] {
+    return this.arrPosts;
+    
   }
 
   getPostsByCategoria(cat){
