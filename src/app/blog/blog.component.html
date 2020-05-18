@@ -1,8 +1,26 @@
-<div *ngFor="let post of AllPosts">
+<!-- <div class="m-5" *ngFor="let post of AllPosts">
     <p>{{post.categoria}}</p>
     <h3>{{post.titulo}}</h3>
     <p>{{post.autor}} a {{post.fecha}}</p>
-    <img src="" alt="">
+    <img [src]="post.imagen">
     <p>{{post.texto}}</p>
-    
+</div> -->
+
+<div class="row row-cols-2 row-cols-md-4 ml-2 mt-3">
+    <div class="col mb-4" *ngFor="let post of AllPosts">
+        <div class="card">
+            <img [src]="post.imagen" class="card-img-top">
+            <div class="card-body">
+                <div class="categoria">
+                    <p>{{post.categoria}}</p>
+                </div>
+                <h4 class="card-title">{{post.titulo}}</h4>
+                <p class="card-text">{{post.texto}}</p>
+            </div>
+            <div class="d-flex justify-content-between m-2">
+                <h6>{{post.autor}}</h6>
+                <h6>{{post.fecha}}</h6>
+            </div>
+        </div>
+    </div>
 </div>
