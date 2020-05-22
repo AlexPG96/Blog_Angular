@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { ServicioService } from '../servicio.service';
 import { Post } from '../models/post.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -12,7 +13,7 @@ export class FormularioComponent implements OnInit {
 
   formFormulario: FormGroup;
 
-  constructor(private servicioService: ServicioService) {
+  constructor(private servicioService: ServicioService, private router: Router) {
     this.formFormulario = new FormGroup({
       titulo: new FormControl('', [
         Validators.required
@@ -45,11 +46,12 @@ export class FormularioComponent implements OnInit {
       this.formFormulario.value.titulo,
       this.formFormulario.value.texto,
       this.formFormulario.value.autor,
-      this.formFormulario.value.imagen,
-      this.formFormulario.value.categoria,
-      this.formFormulario.value.fecha
+      this.formFormulario.value.imagen, 
+      this.formFormulario.value.fecha,
+      this.formFormulario.value.categoria
     );
     this.servicioService.agregarPost(newPost) ;
+    this.router.navigate(['/blog'])
   }
 
 }

@@ -11,10 +11,21 @@ export class BlogComponent implements OnInit {
 
   AllPosts: Post[];
 
+
   constructor(private servicioService: ServicioService) { }
 
   ngOnInit(): void {
     this.AllPosts = this.servicioService.getAllPost();
+  }
+
+  filtrarPost($event) {
+    console.log($event.target.value)
+    //captura el valor del option.
+    this.servicioService.getPostsByCategoria($event.target.value)
+    .then(arrPost => {
+      this.AllPosts = arrPost;
+    })
+
   }
 
 }
